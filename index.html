@@ -1861,6 +1861,7 @@ body.light #page-home .home-hero::after{
 @media (max-width:768px){
   #page-work .work-editorial-grid .work-project .project-media{
     display:block!important;
+    position:relative!important;
     visibility:visible!important;
     opacity:1!important;
     width:100%!important;
@@ -1871,17 +1872,30 @@ body.light #page-home .home-hero::after{
     overflow:hidden!important;
   }
 
+  /* Anula o espaçador ::before de uma regra mobile antiga (padding-top hack).
+     Ele ficava ocupando espaço ANTES da imagem no fluxo normal e empurrava
+     a imagem pra fora da caixa, que era cortada pelo overflow:hidden —
+     por isso só aparecia o fundo preto. */
+  #page-work .work-editorial-grid .work-project .project-media::before{
+    content:none!important;
+    display:none!important;
+  }
+
   #page-work .work-editorial-grid .work-project .project-media img{
     display:block!important;
     visibility:visible!important;
     opacity:1!important;
-    position:relative!important;
+    position:absolute!important;
+    inset:0!important;
+    top:0!important;
+    left:0!important;
     width:100%!important;
     height:100%!important;
     min-width:100%!important;
     min-height:100%!important;
     max-width:none!important;
     max-height:none!important;
+    margin:0!important;
     object-fit:cover!important;
   }
 
