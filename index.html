@@ -1600,16 +1600,151 @@ body.light #page-home .home-hero::after{
 }
 </style>
 
-<style id="mobile-work-video-stack-v1">
+<style id="mobile-work-clean-final">
+/* MOBILE WORK — layout rebuilt from scratch */
 @media (max-width: 768px){
-#page-work .work-editorial-grid{display:grid!important;grid-template-columns:1fr!important;gap:42px!important;}
-#page-work .work-project,#page-work .work-project.project-featured,#page-work .work-project.project-cinematic{grid-column:1!important;width:100%!important;margin-top:0!important;}
-#page-work .project-media,#page-work .project-featured .project-media,#page-work .project-cinematic .project-media{width:100%!important;aspect-ratio:16/9!important;height:auto!important;min-height:0!important;}
-#page-work .project-media img{width:100%!important;height:100%!important;object-fit:cover!important;display:block!important;}
-#page-work .project-info{display:block!important;width:100%!important;padding:16px 0 0!important;margin-top:0!important;border-top:1px solid var(--border)!important;}
-#page-work .project-info > div{width:100%!important;}
-#page-work .project-info p{width:100%!important;margin-top:12px!important;padding-top:0!important;line-height:1.65!important;}
-#page-work .project-open{opacity:1!important;transform:none!important;}
+  html, body { overflow-x:hidden !important; }
+
+  #page-work{
+    width:100% !important;
+    max-width:none !important;
+    overflow:visible !important;
+  }
+
+  #page-work .work-editorial-grid{
+    display:block !important;
+    width:100% !important;
+    max-width:none !important;
+    box-sizing:border-box !important;
+    margin:0 !important;
+    padding:32px 16px 60px !important;
+  }
+
+  #page-work .work-project,
+  #page-work .work-project.project-featured,
+  #page-work .work-project.project-offset,
+  #page-work .work-project.project-cinematic{
+    display:block !important;
+    position:relative !important;
+    width:100% !important;
+    max-width:none !important;
+    min-width:0 !important;
+    height:auto !important;
+    margin:0 0 54px !important;
+    padding:0 !important;
+    grid-column:auto !important;
+    box-sizing:border-box !important;
+    transform:none !important;
+  }
+
+  #page-work .work-project:last-child{ margin-bottom:0 !important; }
+
+  /* Preview: always a full-width 16:9 box */
+  #page-work .work-project > .project-media{
+    display:block !important;
+    position:relative !important;
+    width:100% !important;
+    max-width:none !important;
+    height:0 !important;
+    min-height:0 !important;
+    padding:0 !important;
+    aspect-ratio:auto !important;
+    overflow:hidden !important;
+    box-sizing:border-box !important;
+    border:1px solid rgba(238,234,226,.1) !important;
+    background:#111 !important;
+  }
+
+  #page-work .work-project > .project-media::before{
+    content:"" !important;
+    display:block !important;
+    width:100% !important;
+    padding-top:56.25% !important;
+  }
+
+  #page-work .work-project > .project-media img{
+    position:absolute !important;
+    inset:0 !important;
+    display:block !important;
+    width:100% !important;
+    height:100% !important;
+    min-width:0 !important;
+    min-height:0 !important;
+    max-width:none !important;
+    max-height:none !important;
+    object-fit:cover !important;
+    object-position:center !important;
+    margin:0 !important;
+    padding:0 !important;
+    transform:none !important;
+  }
+
+  /* Keep overlays inside the preview */
+  #page-work .work-project > .project-media .project-index{
+    position:absolute !important;
+    top:14px !important;
+    left:15px !important;
+    z-index:4 !important;
+  }
+
+  #page-work .work-project > .project-media .project-open{
+    position:absolute !important;
+    top:12px !important;
+    right:12px !important;
+    z-index:4 !important;
+    opacity:1 !important;
+    visibility:visible !important;
+    transform:none !important;
+  }
+
+  /* Information is ALWAYS below the preview */
+  #page-work .work-project > .project-info{
+    display:block !important;
+    position:relative !important;
+    width:100% !important;
+    max-width:none !important;
+    min-width:0 !important;
+    height:auto !important;
+    margin:0 !important;
+    padding:17px 2px 0 !important;
+    border-top:1px solid var(--border) !important;
+    box-sizing:border-box !important;
+    transform:none !important;
+  }
+
+  #page-work .work-project > .project-info > div,
+  #page-work .work-project > .project-info .project-cat,
+  #page-work .work-project > .project-info h2,
+  #page-work .work-project > .project-info p{
+    display:block !important;
+    width:100% !important;
+    max-width:none !important;
+    min-width:0 !important;
+    box-sizing:border-box !important;
+  }
+
+  #page-work .work-project > .project-info .project-cat{
+    margin:0 0 8px !important;
+  }
+
+  #page-work .work-project > .project-info h2{
+    margin:0 !important;
+    font-size:29px !important;
+    line-height:1.02 !important;
+  }
+
+  #page-work .work-project > .project-info p{
+    margin:12px 0 0 !important;
+    padding:0 !important;
+    font-size:11px !important;
+    line-height:1.7 !important;
+  }
+
+  /* Kill desktop reveal/animation transforms on these cards */
+  #page-work .work-project,
+  #page-work .work-project *{
+    animation:none !important;
+  }
 }
 </style>
 </head>
@@ -2279,74 +2414,6 @@ body:not(.light) .nav-wrap.scrolled nav{
 })();
 </script>
 
-
-<style id="mobile-work-video-stack-v2">
-@media (max-width: 900px){
-  #page-work .work-editorial-grid{
-    display:flex!important;
-    flex-direction:column!important;
-    width:100%!important;
-    max-width:none!important;
-    padding:32px 16px 20px!important;
-    gap:38px!important;
-  }
-  #page-work .work-project,
-  #page-work .work-project.project-featured,
-  #page-work .work-project.project-cinematic,
-  #page-work .work-project.project-offset{
-    display:flex!important;
-    flex-direction:column!important;
-    width:100%!important;
-    max-width:none!important;
-    grid-column:auto!important;
-    margin:0!important;
-  }
-  #page-work .work-project .project-media,
-  #page-work .work-project.project-featured .project-media,
-  #page-work .work-project.project-cinematic .project-media{
-    order:1!important;
-    display:block!important;
-    width:100%!important;
-    height:auto!important;
-    aspect-ratio:16/9!important;
-    min-height:0!important;
-    flex:0 0 auto!important;
-  }
-  #page-work .work-project .project-media img{
-    display:block!important;
-    width:100%!important;
-    height:100%!important;
-    min-width:100%!important;
-    min-height:100%!important;
-    object-fit:cover!important;
-  }
-  #page-work .work-project .project-info{
-    order:2!important;
-    display:flex!important;
-    flex-direction:column!important;
-    width:100%!important;
-    min-width:0!important;
-    padding:16px 2px 0!important;
-    margin:0!important;
-    border-top:1px solid var(--border)!important;
-    gap:0!important;
-  }
-  #page-work .work-project .project-info>div,
-  #page-work .work-project .project-info p{
-    width:100%!important;
-    min-width:0!important;
-  }
-  #page-work .work-project .project-info p{
-    margin:12px 0 0!important;
-    padding:0!important;
-    line-height:1.7!important;
-  }
-  #page-work .work-project .project-open{
-    opacity:1!important;
-    transform:none!important;
-  }
-}
-</style>
 
 </body>
 </html>
