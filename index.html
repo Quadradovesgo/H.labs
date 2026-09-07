@@ -1747,6 +1747,114 @@ body.light #page-home .home-hero::after{
   }
 }
 </style>
+
+<style id="mobile-video-modal-v4">
+/* MOBILE — vídeo grande em cima + informações embaixo */
+@media (max-width: 768px){
+  #vidModal{
+    align-items:center!important;
+    justify-content:center!important;
+    padding:12px!important;
+    box-sizing:border-box!important;
+  }
+
+  #vidModal .vid-modal-card{
+    display:flex!important;
+    flex-direction:column!important;
+    width:100%!important;
+    max-width:720px!important;
+    max-height:92svh!important;
+    height:auto!important;
+    overflow-y:auto!important;
+    overflow-x:hidden!important;
+    margin:0!important;
+    transform:scale(.96) translateY(14px);
+  }
+
+  #vidModal.open .vid-modal-card{
+    transform:scale(1) translateY(0);
+  }
+
+  #vidModal .vid-modal-player-wrap{
+    order:1!important;
+    width:100%!important;
+    height:auto!important;
+    min-height:0!important;
+    aspect-ratio:16/9!important;
+    flex:0 0 auto!important;
+    overflow:hidden!important;
+  }
+
+  #vidModal .vid-modal-player-wrap iframe{
+    display:block!important;
+    width:100%!important;
+    height:100%!important;
+  }
+
+  #vidModal .vid-modal-info{
+    order:2!important;
+    width:100%!important;
+    box-sizing:border-box!important;
+    padding:22px 20px 20px!important;
+    border-left:0!important;
+    border-top:1px solid rgba(201,168,76,.15)!important;
+    background:#0e0e0e!important;
+    flex:0 0 auto!important;
+  }
+
+  #vidModal .vid-modal-cat{
+    margin-bottom:10px!important;
+  }
+
+  #vidModal .vid-modal-title{
+    font-size:clamp(25px,7vw,34px)!important;
+    line-height:1.02!important;
+    margin-bottom:12px!important;
+  }
+
+  #vidModal .vid-modal-desc{
+    font-size:11px!important;
+    line-height:1.7!important;
+  }
+
+  #vidModal .vid-modal-actions{
+    margin-top:18px!important;
+  }
+
+  #vidModal .vid-modal-close-btn{
+    width:100%!important;
+    min-height:44px!important;
+  }
+
+  #vidModal .vid-modal-x{
+    top:10px!important;
+    right:10px!important;
+    width:34px!important;
+    height:34px!important;
+  }
+}
+
+@media (max-width:430px){
+  #vidModal{
+    padding:10px!important;
+  }
+
+  #vidModal .vid-modal-card{
+    width:100%!important;
+    max-height:94svh!important;
+    border-radius:10px!important;
+  }
+
+  #vidModal .vid-modal-info{
+    padding:19px 17px 17px!important;
+  }
+
+  #vidModal .vid-modal-title{
+    font-size:28px!important;
+  }
+}
+</style>
+
 </head>
 <body>
 <div class="vid-modal" id="vidModal">
