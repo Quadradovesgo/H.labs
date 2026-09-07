@@ -1599,6 +1599,19 @@ body.light #page-home .home-hero::after{
   transform:scale(1.06)!important;
 }
 </style>
+
+<style id="mobile-work-video-stack-v1">
+@media (max-width: 768px){
+#page-work .work-editorial-grid{display:grid!important;grid-template-columns:1fr!important;gap:42px!important;}
+#page-work .work-project,#page-work .work-project.project-featured,#page-work .work-project.project-cinematic{grid-column:1!important;width:100%!important;margin-top:0!important;}
+#page-work .project-media,#page-work .project-featured .project-media,#page-work .project-cinematic .project-media{width:100%!important;aspect-ratio:16/9!important;height:auto!important;min-height:0!important;}
+#page-work .project-media img{width:100%!important;height:100%!important;object-fit:cover!important;display:block!important;}
+#page-work .project-info{display:block!important;width:100%!important;padding:16px 0 0!important;margin-top:0!important;border-top:1px solid var(--border)!important;}
+#page-work .project-info > div{width:100%!important;}
+#page-work .project-info p{width:100%!important;margin-top:12px!important;padding-top:0!important;line-height:1.65!important;}
+#page-work .project-open{opacity:1!important;transform:none!important;}
+}
+</style>
 </head>
 <body>
 <div class="vid-modal" id="vidModal">
