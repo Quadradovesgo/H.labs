@@ -1891,28 +1891,65 @@ body.light #page-home .home-hero::after{
 }
 </style>
 
-<script id="mobile-work-thumbs-fallback-v5">
+<script id="mobile-work-thumbs-fallback-v6">
 (function(){
   const ids = ["J5m6EkLBkAg","FCG6FgjPXEU","JVymWg92Mow","XR1tm3aB2C8","wfKMiLkWsK8","olOTxCLnlAk"];
   function ensureThumbs(){
     document.querySelectorAll('#page-work .project-media img').forEach((img,i)=>{
-      img.loading = 'eager';
-      img.decoding = 'async';
-      img.style.visibility = 'visible';
-      img.style.opacity = '1';
-      img.onerror = function(){
-        const id = ids[i];
-        if(id && !this.src.includes('/hqdefault.jpg')){
-          this.src = 'https://i.ytimg.com/vi/' + id + '/hqdefault.jpg';
-        }
-      };
+      const id=ids[i]; if(!id) return;
+      img.loading='eager'; img.decoding='async';
+      img.style.display='block'; img.style.visibility='visible'; img.style.opacity='1';
+      if(!img.dataset.thumbFallback){
+        img.dataset.thumbFallback='1';
+        img.addEventListener('error',function(){
+          if(!this.dataset.thumbFallback2){
+            this.dataset.thumbFallback2='1';
+            this.src='https://i.ytimg.com/vi/'+id+'/hqdefault.jpg';
+          }
+        });
+      }
     });
   }
   ensureThumbs();
-  document.addEventListener('DOMContentLoaded', ensureThumbs);
+  document.addEventListener('DOMContentLoaded',ensureThumbs);
+  window.addEventListener('pageshow',ensureThumbs);
 })();
 </script>
 
+<style id="mobile-work-thumbs-final-v6">
+@media (max-width:768px){
+  #page-work .work-editorial-grid .work-project > .project-media{
+    position:relative!important;
+    display:block!important;
+    width:100%!important;
+    height:auto!important;
+    min-height:0!important;
+    aspect-ratio:16/9!important;
+    padding:0!important;
+    overflow:hidden!important;
+    background:#111!important;
+  }
+  #page-work .work-editorial-grid .work-project > .project-media::before{
+    display:none!important;
+    content:none!important;
+  }
+  #page-work .work-editorial-grid .work-project > .project-media img{
+    position:absolute!important;
+    inset:0!important;
+    display:block!important;
+    width:100%!important;
+    height:100%!important;
+    min-width:0!important;
+    min-height:0!important;
+    max-width:none!important;
+    max-height:none!important;
+    object-fit:cover!important;
+    object-position:center!important;
+    margin:0!important;
+    padding:0!important;
+  }
+}
+</style>
 </head>
 <body>
 <div class="vid-modal" id="vidModal">
@@ -2011,20 +2048,20 @@ body.light #page-home .home-hero::after{
   <div class="carousel-section">
     <p class="carousel-label">Trabalhos selecionados</p>
     <div class="carousel-track" id="carTrack">
-      <a class="car-card" href="#" onclick="openModal('J5m6EkLBkAg');return false"><img src="https://i.ytimg.com/vi/J5m6EkLBkAg/hqdefault.jpg" loading="lazy" alt="Dinâmica de grupo"><div class="car-card-label">Dinâmica de grupo</div></a>
-      <a class="car-card" href="#" onclick="openModal('FCG6FgjPXEU');return false"><img src="https://i.ytimg.com/vi/FCG6FgjPXEU/hqdefault.jpg" loading="lazy" alt="Simulação"><div class="car-card-label">Simulação</div></a>
-      <a class="car-card" href="#" onclick="openModal('JVymWg92Mow');return false"><img src="https://i.ytimg.com/vi/JVymWg92Mow/hqdefault.jpg" loading="lazy" alt="Gameplay"><div class="car-card-label">Gameplay</div></a>
-      <a class="car-card" href="#" onclick="openModal('XR1tm3aB2C8');return false"><img src="https://i.ytimg.com/vi/XR1tm3aB2C8/hqdefault.jpg" loading="lazy" alt="Mundo aberto"><div class="car-card-label">Mundo aberto</div></a>
-      <a class="car-card" href="#" onclick="openModal('wfKMiLkWsK8');return false"><img src="https://i.ytimg.com/vi/wfKMiLkWsK8/hqdefault.jpg" loading="lazy" alt="Sobrevivência cinematográfica"><div class="car-card-label">Sobrevivência cinematográfica</div></a>
+      <a class="car-card" href="#" onclick="openModal('J5m6EkLBkAg');return false"><img src="https://img.youtube.com/vi/J5m6EkLBkAg/hqdefault.jpg" loading="eager" alt="Dinâmica de grupo"><div class="car-card-label">Dinâmica de grupo</div></a>
+      <a class="car-card" href="#" onclick="openModal('FCG6FgjPXEU');return false"><img src="https://img.youtube.com/vi/FCG6FgjPXEU/hqdefault.jpg" loading="eager" alt="Simulação"><div class="car-card-label">Simulação</div></a>
+      <a class="car-card" href="#" onclick="openModal('JVymWg92Mow');return false"><img src="https://img.youtube.com/vi/JVymWg92Mow/hqdefault.jpg" loading="eager" alt="Gameplay"><div class="car-card-label">Gameplay</div></a>
+      <a class="car-card" href="#" onclick="openModal('XR1tm3aB2C8');return false"><img src="https://img.youtube.com/vi/XR1tm3aB2C8/hqdefault.jpg" loading="eager" alt="Mundo aberto"><div class="car-card-label">Mundo aberto</div></a>
+      <a class="car-card" href="#" onclick="openModal('wfKMiLkWsK8');return false"><img src="https://img.youtube.com/vi/wfKMiLkWsK8/hqdefault.jpg" loading="eager" alt="Sobrevivência cinematográfica"><div class="car-card-label">Sobrevivência cinematográfica</div></a>
       <a class="car-card" href="#" onclick="openModal('Cg0saImBILE');return false"><img src="https://i.ytimg.com/vi_webp/Cg0saImBILE/sddefault.webp" loading="lazy" alt="Edição de gameplay"><div class="car-card-label">Edição de gameplay</div></a>
       <a class="car-card" href="#" onclick="openModal('YSW9Mi8RQxg');return false"><img src="https://i.ytimg.com/vi_webp/YSW9Mi8RQxg/sddefault.webp" loading="lazy" alt="Edição para redes"><div class="car-card-label">Edição para redes</div></a>
       <a class="car-card" href="#" onclick="openModal('IZeTpxzYXCY');return false"><img src="https://i.ytimg.com/vi_webp/IZeTpxzYXCY/sddefault.webp" loading="lazy" alt="Conteúdo para marcas"><div class="car-card-label">Conteúdo para marcas</div></a></a>
       <!-- duplicados para o loop -->
-      <a class="car-card" href="#" onclick="openModal('J5m6EkLBkAg');return false"><img src="https://i.ytimg.com/vi/J5m6EkLBkAg/hqdefault.jpg" loading="lazy" alt="Dinâmica de grupo"><div class="car-card-label">Dinâmica de grupo</div></a>
-      <a class="car-card" href="#" onclick="openModal('FCG6FgjPXEU');return false"><img src="https://i.ytimg.com/vi/FCG6FgjPXEU/hqdefault.jpg" loading="lazy" alt="Simulação"><div class="car-card-label">Simulação</div></a>
-      <a class="car-card" href="#" onclick="openModal('JVymWg92Mow');return false"><img src="https://i.ytimg.com/vi/JVymWg92Mow/hqdefault.jpg" loading="lazy" alt="Gameplay"><div class="car-card-label">Gameplay</div></a>
-      <a class="car-card" href="#" onclick="openModal('XR1tm3aB2C8');return false"><img src="https://i.ytimg.com/vi/XR1tm3aB2C8/hqdefault.jpg" loading="lazy" alt="Mundo aberto"><div class="car-card-label">Mundo aberto</div></a>
-      <a class="car-card" href="#" onclick="openModal('wfKMiLkWsK8');return false"><img src="https://i.ytimg.com/vi/wfKMiLkWsK8/hqdefault.jpg" loading="lazy" alt="Sobrevivência cinematográfica"><div class="car-card-label">Sobrevivência cinematográfica</div></a>
+      <a class="car-card" href="#" onclick="openModal('J5m6EkLBkAg');return false"><img src="https://img.youtube.com/vi/J5m6EkLBkAg/hqdefault.jpg" loading="eager" alt="Dinâmica de grupo"><div class="car-card-label">Dinâmica de grupo</div></a>
+      <a class="car-card" href="#" onclick="openModal('FCG6FgjPXEU');return false"><img src="https://img.youtube.com/vi/FCG6FgjPXEU/hqdefault.jpg" loading="eager" alt="Simulação"><div class="car-card-label">Simulação</div></a>
+      <a class="car-card" href="#" onclick="openModal('JVymWg92Mow');return false"><img src="https://img.youtube.com/vi/JVymWg92Mow/hqdefault.jpg" loading="eager" alt="Gameplay"><div class="car-card-label">Gameplay</div></a>
+      <a class="car-card" href="#" onclick="openModal('XR1tm3aB2C8');return false"><img src="https://img.youtube.com/vi/XR1tm3aB2C8/hqdefault.jpg" loading="eager" alt="Mundo aberto"><div class="car-card-label">Mundo aberto</div></a>
+      <a class="car-card" href="#" onclick="openModal('wfKMiLkWsK8');return false"><img src="https://img.youtube.com/vi/wfKMiLkWsK8/hqdefault.jpg" loading="eager" alt="Sobrevivência cinematográfica"><div class="car-card-label">Sobrevivência cinematográfica</div></a>
       <a class="car-card" href="#" onclick="openModal('Cg0saImBILE');return false"><img src="https://i.ytimg.com/vi_webp/Cg0saImBILE/sddefault.webp" loading="lazy" alt="Edição de gameplay"><div class="car-card-label">Edição de gameplay</div></a>
       <a class="car-card" href="#" onclick="openModal('YSW9Mi8RQxg');return false"><img src="https://i.ytimg.com/vi_webp/YSW9Mi8RQxg/sddefault.webp" loading="lazy" alt="Edição para redes"><div class="car-card-label">Edição para redes</div></a>
       <a class="car-card" href="#" onclick="openModal('IZeTpxzYXCY');return false"><img src="https://i.ytimg.com/vi_webp/IZeTpxzYXCY/sddefault.webp" loading="lazy" alt="Conteúdo para marcas"><div class="car-card-label">Conteúdo para marcas</div></a>
@@ -2098,32 +2135,32 @@ body.light #page-home .home-hero::after{
 
   <section class="work-editorial-grid" aria-label="Projetos selecionados">
     <a class="work-project project-featured" href="#" onclick="openModal('J5m6EkLBkAg');return false">
-      <div class="project-media"><img src="https://i.ytimg.com/vi/J5m6EkLBkAg/hqdefault.jpg" alt="Dinâmica de grupo" loading="eager"><span class="project-index">01</span><span class="project-open">Abrir projeto <b>↗</b></span></div>
+      <div class="project-media"><img src="https://img.youtube.com/vi/J5m6EkLBkAg/hqdefault.jpg" loading="eager" alt="Dinâmica de grupo" loading="eager"><span class="project-index">01</span><span class="project-open">Abrir projeto <b>↗</b></span></div>
       <div class="project-info"><div><span class="project-cat">Narrativa de gameplay</span><h2>Dinâmica de grupo em ritmo rápido</h2></div><p>Edição multiplayer guiada pelo ritmo, pelas reações e pelos melhores momentos da sessão.</p></div>
     </a>
 
     <a class="work-project" href="#" onclick="openModal('FCG6FgjPXEU');return false">
-      <div class="project-media"><img src="https://i.ytimg.com/vi/FCG6FgjPXEU/hqdefault.jpg" alt="Simulação" loading="lazy"><span class="project-index">02</span><span class="project-open">Abrir projeto <b>↗</b></span></div>
+      <div class="project-media"><img src="https://img.youtube.com/vi/FCG6FgjPXEU/hqdefault.jpg" loading="eager" alt="Simulação" loading="lazy"><span class="project-index">02</span><span class="project-open">Abrir projeto <b>↗</b></span></div>
       <div class="project-info"><div><span class="project-cat">Narrativa de gameplay</span><h2>Simulação</h2></div><p>Uma edição clara, fácil de acompanhar e sem abrir mão dos melhores momentos.</p></div>
     </a>
 
     <a class="work-project" href="#" onclick="openModal('JVymWg92Mow');return false">
-      <div class="project-media"><img src="https://i.ytimg.com/vi/JVymWg92Mow/hqdefault.jpg" alt="Edição de gameplay imersivo" loading="lazy"><span class="project-index">03</span><span class="project-open">Abrir projeto <b>↗</b></span></div>
+      <div class="project-media"><img src="https://img.youtube.com/vi/JVymWg92Mow/hqdefault.jpg" loading="eager" alt="Edição de gameplay imersivo" loading="lazy"><span class="project-index">03</span><span class="project-open">Abrir projeto <b>↗</b></span></div>
       <div class="project-info"><div><span class="project-cat">Narrativa de gameplay</span><h2>Edição de gameplay imersivo</h2></div><p>Cortes dinâmicos, desenho de som e motion graphics construídos a partir do material, do início ao fim.</p></div>
     </a>
 
     <a class="work-project project-offset" href="#" onclick="openModal('XR1tm3aB2C8');return false">
-      <div class="project-media"><img src="https://i.ytimg.com/vi/XR1tm3aB2C8/hqdefault.jpg" alt="Escala e impacto visual" loading="lazy"><span class="project-index">04</span><span class="project-open">Abrir projeto <b>↗</b></span></div>
+      <div class="project-media"><img src="https://img.youtube.com/vi/XR1tm3aB2C8/hqdefault.jpg" loading="eager" alt="Escala e impacto visual" loading="lazy"><span class="project-index">04</span><span class="project-open">Abrir projeto <b>↗</b></span></div>
       <div class="project-info"><div><span class="project-cat">RPG / Mundo aberto</span><h2>Escala e impacto visual</h2></div><p>Um equilíbrio entre exploração, combate e atmosfera, deixando o mundo respirar quando precisa.</p></div>
     </a>
 
     <a class="work-project project-cinematic" href="#" onclick="openModal('wfKMiLkWsK8');return false">
-      <div class="project-media"><img src="https://i.ytimg.com/vi/wfKMiLkWsK8/hqdefault.jpg" alt="Ritmo atmosférico e tranquilo" loading="lazy"><span class="project-index">05</span><span class="project-open">Abrir projeto <b>↗</b></span></div>
+      <div class="project-media"><img src="https://img.youtube.com/vi/wfKMiLkWsK8/hqdefault.jpg" loading="eager" alt="Ritmo atmosférico e tranquilo" loading="lazy"><span class="project-index">05</span><span class="project-open">Abrir projeto <b>↗</b></span></div>
       <div class="project-info"><div><span class="project-cat">Cinematográfico / Sobrevivência</span><h2>Ritmo atmosférico e tranquilo</h2></div><p>Uma abordagem mais cinematográfica, guiada pela atmosfera, pela luz e pelo ambiente.</p></div>
     </a>
 
     <a class="work-project project-cinematic" href="#" onclick="openModal('olOTxCLnlAk');return false">
-      <div class="project-media"><img src="https://i.ytimg.com/vi/olOTxCLnlAk/hqdefault.jpg" alt="Documentário editado" loading="lazy"><span class="project-index">06</span><span class="project-open">Abrir projeto <b>↗</b></span></div>
+      <div class="project-media"><img src="https://img.youtube.com/vi/olOTxCLnlAk/hqdefault.jpg" loading="eager" alt="Documentário editado" loading="lazy"><span class="project-index">06</span><span class="project-open">Abrir projeto <b>↗</b></span></div>
       <div class="project-info"><div><span class="project-cat">Documentário / Edição</span><h2>Documentário editado</h2></div><p>Uma edição documental com ritmo, narrativa, atmosfera e impacto visual.</p></div>
     </a>
   </section>
