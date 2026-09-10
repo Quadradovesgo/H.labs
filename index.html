@@ -1861,7 +1861,6 @@ body.light #page-home .home-hero::after{
 @media (max-width:768px){
   #page-work .work-editorial-grid .work-project .project-media{
     display:block!important;
-    position:relative!important;
     visibility:visible!important;
     opacity:1!important;
     width:100%!important;
@@ -1872,30 +1871,17 @@ body.light #page-home .home-hero::after{
     overflow:hidden!important;
   }
 
-  /* Anula o espaçador ::before de uma regra mobile antiga (padding-top hack).
-     Ele ficava ocupando espaço ANTES da imagem no fluxo normal e empurrava
-     a imagem pra fora da caixa, que era cortada pelo overflow:hidden —
-     por isso só aparecia o fundo preto. */
-  #page-work .work-editorial-grid .work-project .project-media::before{
-    content:none!important;
-    display:none!important;
-  }
-
   #page-work .work-editorial-grid .work-project .project-media img{
     display:block!important;
     visibility:visible!important;
     opacity:1!important;
-    position:absolute!important;
-    inset:0!important;
-    top:0!important;
-    left:0!important;
+    position:relative!important;
     width:100%!important;
     height:100%!important;
     min-width:100%!important;
     min-height:100%!important;
     max-width:none!important;
     max-height:none!important;
-    margin:0!important;
     object-fit:cover!important;
   }
 
@@ -2325,15 +2311,15 @@ body.light #page-home .home-hero::after{
 
 // VIDEO MODAL
 var VID_DATA = {
-  'Cg0saImBILE':{cat:'Narrativa de gameplay',    title:'Edição que Prende a atenção',  desc:'Dynamic cuts, motion effects, and titles designed to support the content from the first second.'},
-  'YSW9Mi8RQxg':{cat:'Social dinâmico',   title:'Social dinâmico Edits',       desc:'Quick, engaging edits optimized for Shorts, Reels, and social media platforms.'},
-  'IZeTpxzYXCY':{cat:'Conteúdo para marcas',     title:'Marca & refinado',            desc:'Clean motion, color grading, and audio designed for professional branded content.'},
-  'J5m6EkLBkAg':{cat:'Narrativa de gameplay',    title:'Dinâmica de grupo em ritmo rápido',     desc:'Multiplayer editing focused on comedic timing and high-energy interactions.'},
-  'FCG6FgjPXEU':{cat:'Narrativa de gameplay',    title:'Simulação',              desc:'Structured storytelling in simulation games condensed into clean 4K narrative.'},
-  'JVymWg92Mow':{cat:'Narrativa de gameplay',    title:'Edição de gameplay imersivo',           desc:'Dynamic cuts, immersive sound design, and custom motion graphics from start to finish.'},
-  'XR1tm3aB2C8':{cat:'RPG / Mundo aberto',    title:'Escala e impacto visual',    desc:'Smooth narrative flow through the RPG world balancing exploration and combat in 4K.'},
-  'wfKMiLkWsK8':{cat:'Cinematográfico / Sobrevivência',title:'Ritmo atmosférico e tranquilo', desc:'Cinematic take on survival with high-end shaders and 4K visual storytelling.'},
-  'olOTxCLnlAk':{cat:'Documentário / Narrativa', title:'Quando as Creepypastas Viraram Realidade', desc:'Documentary-style editing with strong pacing, atmosphere, tension, and visual storytelling.'}
+  'Cg0saImBILE':{cat:'Narrativa de gameplay',    title:'Edição que Prende a atenção',  desc:'Cortes dinâmicos, efeitos de movimento e títulos pensados para reforçar o conteúdo desde o primeiro segundo.'},
+  'YSW9Mi8RQxg':{cat:'Social dinâmico',   title:'Social dinâmico Edits',       desc:'Edição rápida e envolvente, otimizada para Shorts, Reels e plataformas de redes sociais.'},
+  'IZeTpxzYXCY':{cat:'Conteúdo para marcas',     title:'Marca & refinado',            desc:'Motion limpo, correção de cor e áudio pensados para conteúdo profissional de marca.'},
+  'J5m6EkLBkAg':{cat:'Narrativa de gameplay',    title:'Dinâmica de grupo em ritmo rápido',     desc:'Edição multiplayer focada no timing das situações, no humor e nas interações de alta energia.'},
+  'FCG6FgjPXEU':{cat:'Narrativa de gameplay',    title:'Simulação',              desc:'Narrativa estruturada em jogos de simulação, condensada em uma edição limpa e em 4K.'},
+  'JVymWg92Mow':{cat:'Narrativa de gameplay',    title:'Edição de gameplay imersivo',           desc:'Cortes dinâmicos, sound design imersivo e motion graphics personalizados do início ao fim.'},
+  'XR1tm3aB2C8':{cat:'RPG / Mundo aberto',    title:'Escala e impacto visual',    desc:'Fluxo narrativo fluido pelo mundo do RPG, equilibrando exploração e combate em 4K.'},
+  'wfKMiLkWsK8':{cat:'Cinematográfico / Sobrevivência',title:'Ritmo atmosférico e tranquilo', desc:'Abordagem cinematográfica de sobrevivência, com shaders avançados e narrativa visual em 4K.'},
+  'olOTxCLnlAk':{cat:'Documentário / Narrativa', title:'Quando as Creepypastas Viraram Realidade', desc:'Edição em estilo documental, com ritmo marcante, atmosfera, tensão e narrativa visual.'}
 };
 function openModal(videoId) {
   var modal=document.getElementById('vidModal'), data=VID_DATA[videoId]||{};
